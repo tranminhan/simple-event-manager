@@ -11,6 +11,16 @@ public class SimpleEventPublisherTest
     SimpleEventPublisher eventPublisher = new SimpleEventPublisher(new EventHandlerMethodAnnotationInvoker());
     SingleMethodTestEventHandler eventHandler = new SingleMethodTestEventHandler();
     
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldRaiseExceptionWhenEventIsNull()
+    {
+        // given
+        Object event = null;
+        
+        // when
+        eventPublisher.publish(event);
+    }
+    
     @Test
     public void shouldInvokeEventHandler()
     {

@@ -16,6 +16,8 @@ public class SimpleEventPublisher implements EventPublisher
     
     public SimpleEventPublisher(final AnnotatedMethodInvoker methodInvoker)
     {
+        Assert.notNull(methodInvoker);
+        
         this.methodInvoker = methodInvoker;
     }
     
@@ -38,6 +40,8 @@ public class SimpleEventPublisher implements EventPublisher
     
     public void publish(Object event)
     {
+        Assert.notNull(event);
+        
         for (Object eventHandler : allEventHandlers)
         {
             Method[] annotatedMethods = methodInvoker.getEventHandlerMethods(eventHandler);
